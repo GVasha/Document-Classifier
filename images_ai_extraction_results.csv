@@ -1,0 +1,101 @@
+template_id,file_name,invoice_number,invoice_date,due_date,issuer_name,recipient_name,total_amount
+1,Template1_Instance0.jpg,12345670,2008-03-20,2016-10-16,Address:16424 Timothy Mission,16424 Timothy Mission,734.33
+1,Template1_Instance1.jpg,v-1999,1994-04-01,1999-11-25,Address:16424 Timothy Mission,"Markville, AK 58294 US.",92.46
+2,Template2_Instance0.jpg,INV17967327,2014-02-23,,"Barnes, Garcia and Martin","North Cindytown, CT 45483 US",653.95
+2,Template2_Instance1.jpg,2YM4d-800,2008-03-27,,"Barnes, Garcia and Martin",Address:13868 Michael Wall,739.31
+3,Template3_Instance0.jpg,INV16291505,2002-03-03,2007-08-20,"Kirk, Murphy and Daniels",All payments to be made in cash. TAXVAT (6.46%): 06.23 $,457.14
+3,Template3_Instance1.jpg,1Y7M40-846,2017-08-06,2024-09-17,"Kirk, Murphy and Daniels",938 Gonzalez Courts Apt. 670,360.43
+4,Template4_Instance0.jpg,31-May-2022,2022-05-31,2022-05-31,‘Address:2180 Michael Ridges Apt. 385,"Port Lindsey, MP 98258 US.",995.15
+4,Template4_Instance1.jpg,26-Apr-2016,2004-01-20,2016-04-26,‘Address:2180 Michael Ridges Apt. 385,"Port Lindsey, MP 98258 US.",806.53
+5,Template5_Instance0.jpg,5Y3M7d-590,1999-01-18,,Bill to:Robyn Johnson,233 Foster Gardens,677.33
+5,Template5_Instance1.jpg,6553-163,2008-04-13,,17969 Pratt Bypass Apt. 628,All payments to be made in cash.,630.17
+6,Template6_Instance0.jpg,INV36598508,2002-02-16,,"Phillips, Thomas and Malone |",187 Laurie Throughway Suite 418,4309.70
+6,Template6_Instance1.jpg,9Y7M2d-047,2016-08-17,,"Phillips, Thomas and Malone |",82097 Moore Branch Suite 397,908.29
+7,Template7_Instance0.jpg,3Y5M9d-848,2020-09-19,2012-03-26,Email:cpetersen@example.com,‘9509 Johnson Causeway,96.93
+7,Template7_Instance1.jpg,SY2M8d-217,2022-04-20,,Email:cpetersen@example.com,Tel:+(414)020-3929 Dis Dae DEIN,74.02
+8,Template8_Instance0.jpg,INV/83-35/489,2010-09-22,2020-07-21,"Graham, Carrillo and Stark",Email:ghodges@example.org,208.39
+8,Template8_Instance1.jpg,INV9S514156,2002-09-01,2004-07-30,"Graham, Carrillo and Stark","Lake Shawnbury, CO 05460 US",76.19
+9,Template9_Instance0.jpg,INV45196529,,,"Navarro, Ford and Bryan","East Melissa, GU 66650 US",778.46
+9,Template9_Instance1.jpg,7637-774,2004-06-21,,GSTINIUIN: 09AABCS142961ZS.,84769 Ashley Turnpike,654.13
+10,Template10_Instance0.jpg,INV/30-14/832,1994-01-03,2007-02-06,Address:4894 Melanie Pass Apt. 742,4894 Melanie Pass Apt. 742,441.14
+10,Template10_Instance1.jpg,9Y2M74-647,2014-01-16,2021-08-16,Address:4894 Melanie Pass Apt. 742,4586 Yolanda Pass Suite 397,796.34
+11,Template11_Instance0.jpg,INV/72-06/714,2010-04-20,2015-07-25,Property range. $17.53,Guess westem scientist $31.55,264.25
+11,Template11_Instance1.jpg,0875-302,2021-11-30,2008-02-17,Protect month media. $74.49,Staff happen open. $20.86,505.92
+12,Template12_Instance0.jpg,2970-559,2002-01-23,2018-12-06,Buyer :Alexander Williams,Richardson-Davis 6479 Smith Causeway,828.69
+12,Template12_Instance1.jpg,6Y1M8d-204,2008-10-24,2006-04-07,Terms & Conditions,All payments to be made in cash.,78.82
+13,Template13_Instance0.jpg,v-1993,1993-11-17,1993-11-17,Fernandez PLC Address:2942 Gary Village Suite 237,All payments to be made,512.52
+13,Template13_Instance1.jpg,v-2004,1997-07-17,2004-11-27,"New Yolandaland, IL 18166 US",Bank Name Central Bank of USA,340.80
+14,Template14_Instance0.jpg,INV/57-22/068,2010-01-17,2011-06-19,Faulkner LLC,841 Marshall Knolls,998.28
+14,Template14_Instance1.jpg,INV/91-15/248,2010-07-16,2013-10-10,Faulkner LLC,52110 Gibson Forks Apt. 087,28.39
+15,Template15_Instance0.jpg,INV38499489,1993-08-27,2006-11-16,Address:744 Hernandez Hollow Apt. 459,"Rossville, UT 53295 US",917.32
+15,Template15_Instance1.jpg,22-Jan-2003,2003-01-22,1994-08-09,Bill to:Eric Vasquez,95433 Michael Springs,545.52
+16,Template16_Instance0.jpg,82/a28,2012-03-12,,Email:amanda25@example.org,696 Thompson Forest,937.51
+16,Template16_Instance1.jpg,oned-023,2002-07-12,,Address:696 Thompson Forest Involgs.qumber 2¥oned-023;,Email:amanda25@example.org,348.21
+17,Template17_Instance0.jpg,INV18097255,1997-04-02,1994-07-27,"Berg, Ward and Wright",Address:5776 Whitney Meadow,392.61
+17,Template17_Instance1.jpg,4ARCPD98743125,2003-10-13,1994-12-23,"Berg, Ward and Wright",Address:5776 Whitney Meadow,83.67
+18,Template18_Instance0.jpg,9203-553,1995-10-12,1997-04-28,"Montgomery, Harrison and Vaughan",‘Address:840 Anderson Locks,483.62
+18,Template18_Instance1.jpg,4M50-468,1997-01-15,2005-04-27,‘Adress:840 Anderson Locks,"Mariatown, AL 01838 US",285.52
+19,Template19_Instance0.jpg,GSTIN4321AAD22,2021-02-07,2019-07-31,‘GSTIN: GSTIN4321AAD22,Address:010 Jeffrey Glens,68.75
+19,Template19_Instance1.jpg,2Y7M54-694,1994-03-28,2018-09-15,‘GSTIN: GSTIN4321AAD22,298 Long Comer Apt. 269,551.70
+20,Template20_Instance0.jpg,INV/24-52636,,,"Foster, Wells and Martin",Address:80626 Gates Plains Suite 320,299.40
+20,Template20_Instance1.jpg,INV/11-08/138,,,"Foster, Wells and Martin",Address:80626 Gates Plains Suite 320,268.20
+21,Template21_Instance0.jpg,1Y5M90-616,1999-05-31,1999-05-31,Address:045 David Walk Suite 362,"East Robert, NV 70596 US",176.26
+21,Template21_Instance1.jpg,INVI71-421692,2020-12-17,2011-03-12,Address:045 David Walk Suite 362,"East Robert, NV 70596 US",28.97
+22,Template22_Instance0.jpg,INV92471762,,,8170 Frederick Manors Suite 247,"West Daniel, NJ 39295 US.",71.99
+22,Template22_Instance1.jpg,5999-429,,,"South Leslie, DE 41119 US",Email:phillip3S@example.net,504.25
+23,Template23_Instance0.jpg,2601-460,1999-10-27,,Buyer :Christopher Calhoun,0600 Cook Corner Apt. 345,759.65
+23,Template23_Instance1.jpg,780-2567,2020-07-02,,Email:smithjeffrey@example.net Thank you for choosing us!,Buyer :Michael Benson,734.01
+24,Template24_Instance0.jpg,INVIT9-731541,1993-09-17,,"Hernandezport, DE 40016 US",Email:rivassarah@example.org,655.98
+24,Template24_Instance1.jpg,INV69712944,1993-03-09,,Address:223 Kristen Mission Suite 986 Note: All payments to be made in cash.,223 Kristen Mission Suite 986 Note: All payments to be made in cash.,676.93
+25,Template25_Instance0.jpg,meghan88,2003-01-10,2022-10-07,Director everyone company. $67.67 1.00 $67.67,"Kelly-Moss Guerraton, TX 60058 US",476.38
+25,Template25_Instance1.jpg,INV/40-85/952,1998-10-23,2021-10-21,Bill to:Lisa Webster,0777 Justin Forge Apt. 514,510.00
+26,Template26_Instance0.jpg,3216-553,2016-06-28,2003-06-09,(Clearly since throughout co 6.00 $57.68,‘Address:496 Buck Rest Suite 598,57.68
+26,Template26_Instance1.jpg,4306-298,2016-03-03,2007-03-07,‘Terms & Conditions,‘Adaress:496 Buck Rest Suite 598,55.87
+27,Template27_Instance0.jpg,INVI55-97/351,2015-10-15,,645 Claudia Expressway Suite 600,"‘South Anthonyland, OH 99813 US",324.84
+27,Template27_Instance1.jpg,INVI47-24/571,1994-01-13,,"West Bradley, VA 14131 US",Email:bryantbrandon@example.net,469.45
+28,Template28_Instance0.jpg,31-Jul-2004,2004-07-31,,Produce south themselves,Buyer :James Thompson,959.48
+28,Template28_Instance1.jpg,13-Jun-2012,2012-06-13,,Buyer :Zachary Har,7128 Martin Stravenue Apt. 729,743.40
+29,Template29_Instance0.jpg,INV/70-15/233,2002-09-07,,Address:03449 Andrade Hill Suite 722,03449 Andrade Hill Suite 722,248.94
+29,Template29_Instance1.jpg,6Y9M6d-638,2008-06-06,,Address:03449 Andrade Hill Suite 722,182 Francis Square,68.27
+30,Template30_Instance0.jpg,3Y3M2d-501,1994-10-19,,{80942 Daniel Trafficway Suite 168,Email:michaeljacobs@example.org,614.33
+30,Template30_Instance1.jpg,3Y8M1d-551,2012-09-18,,"South Lance, FL 42103 US.",Emailallenmartin@example.net,597.08
+31,Template31_Instance0.jpg,INV73642396,2022-06-26,,Bill to:Courtney Jon,Address:785 Kaiser Circles Suite 840 785 Kaiser Circles Suite 840,248.12
+31,Template31_Instance1.jpg,INV/66-26/882,1997-10-23,,Buyer :Brett Hatfield,Address:785 Kaiser Circles Suite 840 59661 Estrada Causeway,172.68
+32,Template32_Instance0.jpg,INV52959005,2012-06-17,,Address:5190 Perry Passage,5190 Perry Passage,5.00
+32,Template32_Instance1.jpg,INV76820400,2019-02-16,,Address:5190 Perry Passage,"Kellyburgh, RI 60615 US",715.39
+33,Template33_Instance0.jpg,INVI86-91/351,2019-11-07,2014-06-23,"Duran, Morgan and Lopez","Joshuaville, CT 95783 US.",596.62
+33,Template33_Instance1.jpg,5Y6M8d-361,1993-04-04,1999-03-03,"Duran, Morgan and Lopez",Address:4901 Long Walll Apt. 620,157.03
+34,Template34_Instance0.jpg,6M40-520,2004-05-25,,Address:66636 Hernandez Loaf Suite 714,(06393 Nguyen Forge Apt. 907,297.10
+34,Template34_Instance1.jpg,INVI24-73/212,2001-03-05,,Address:66636 Hernandez Loaf Suite 714,"Lisafurt, LA 33980 US",936.63
+35,Template35_Instance0.jpg,INV22803409,1997-07-13,,"‘South Jessica, CT 86255 US",Roger Smith SHIP_TO:,645.06
+35,Template35_Instance1.jpg,v-1997,1997-11-19,,Address:61959 Fernando Island Apt. 694,All payments to be made in cash.,783.13
+36,Template36_Instance0.jpg,INV37478055,2021-08-02,,‘Address:047 Jackson Meadows Apt. 391,047 Jackson Meadows Apt. 391,342.70
+36,Template36_Instance1.jpg,5811-948,1999-07-27,,Bill to:Tammy Fisher,93159 Anderson Crossing,414.66
+37,Template37_Instance0.jpg,16-Aug-2006,2006-08-16,2009-08-27,Address:05866 Velazquez Mount PO Number 01,(05866 Velazquez Mount,98.66
+37,Template37_Instance1.jpg,26-Jan-1993,1993-01-26,2005-08-19,Address:05866 Velazquez Mount PO Number :21,7706 Hannah Alley Apt. 379,870.74
+38,Template38_Instance0.jpg,INV/76-39/908,1995-02-26,,‘Terms & Conditions,‘Address:02850 Nicole Ferry Apt. 873,570.36
+38,Template38_Instance1.jpg,4Y1M54-819,2014-03-20,2020-04-13,‘Terms & Conditions,‘Address:02850 Nicole Ferry Apt. 873,142.73
+39,Template39_Instance0.jpg,INV92089683,1997-06-02,2006-09-21,Terms & Conditions,Address:19021 Christopher Estate,477.50
+39,Template39_Instance1.jpg,INV/64-61/340,2002-04-24,2010-09-06,Terms & Conditions,3096 Wood Junctions Apt. 859,698.43
+40,Template40_Instance0.jpg,6125-131,2001-02-22,2009-01-26,"Parker, Phillips and Thomas",‘8508 Morgan Forge Suite 534,811.23
+40,Template40_Instance1.jpg,INV/24-23/499,1998-11-19,2014-09-25,"Parker, Phillips and Thomas",‘Address:8508 Morgan Forge Suite 534,169.72
+41,Template41_Instance0.jpg,8020-685,1996-12-23,,Address:831 Harrison Manors Suite 420,831 Harrison Manors Suite 420,612.31
+41,Template41_Instance1.jpg,INV/43-38/016,2015-08-11,,‘Terms & Conditions,Address:831 Harrison Manors Suite 420,122.38
+42,Template42_Instance0.jpg,INVI74-12/829,1999-12-24,1994-09-13,Address:84945 Watson Greens Suite 097,"Maryshire, TX 73287 US",379.20
+42,Template42_Instance1.jpg,6481-814,1995-05-11,2022-04-21,Address:84945 Watson Greens Suite 097,"Maryshire, TX 73287 US",480.42
+43,Template43_Instance0.jpg,susan62,2005-04-09,,Address:938 Gonzalez Key Suite 573,"New Anitaport, MN 04941 US.",904.70
+43,Template43_Instance1.jpg,INV30649350,2013-11-13,2011-01-03,Address:938 Gonzalez Key Suite 573,"New Anitaport, MN 04941 US.",421.93
+44,Template44_Instance0.jpg,v-2008,2008-11-23,,"Knight, Huffman and Moore",Email:andrewcowan@example.com [rive numbieg Inyr 786/408),330.61
+44,Template44_Instance1.jpg,03-Jul-2004,2004-07-03,,"Knight, Huffman and Moore",Email:andrewcowan@example.com \ivsies numbieg INV IS:7 81878),44.68
+45,Template45_Instance0.jpg,INV00871889,1995-01-08,,"Patton, Ortiz and Moore",‘Address:07924 Daniel View,543.81
+45,Template45_Instance1.jpg,INV/40-05/519,2002-10-14,,"Patton, Ortiz and Moore",6134 Charles Ports Apt. 044,386.50
+46,Template46_Instance0.jpg,3125-883,2005-07-09,,186673 Gutierrez Orchard,"‘Shaffermouth, FL 10247 US",593.85
+46,Template46_Instance1.jpg,4079-074,1999-10-07,1997-07-06,"Davisland, CO 19020 US",All payments to be made in cash.,473.28
+47,Template47_Instance0.jpg,INVI56-79/422,2013-01-06,1995-12-06,"Rogers, Olson and Sanders",Address:116 Smith Loop Apt. 882,348.15
+47,Template47_Instance1.jpg,INV64837157,1998-04-23,2006-01-31,"Rogers, Olson and Sanders",Address:116 Smith Loop Apt.,478.01
+48,Template48_Instance0.jpg,8Y4M7d-568,2006-10-28,2005-03-28,Address:9950 Santos Squares,"Garzafurt, MH 31937 US",148.28
+48,Template48_Instance1.jpg,INVO1328722,2019-11-02,2008-01-06,Address:9950 Santos Squares,"Warrenville, UT 78315 US",215.58
+49,Template49_Instance0.jpg,23R67,,,Including responsibil $44.31 5.00,Robinson-Carson 62 96 e,300.00
+49,Template49_Instance1.jpg,INV16851863,,,Receive international,GSTIN 37LTOQASACEIZS,505.77
+50,Template50_Instance0.jpg,08-Jan-1999,1999-01-08,1996-09-10,‘Stein-Fernandez BILL_To:,‘56935 Edward Path Apt. 798,456.23
+50,Template50_Instance1.jpg,871-4046,2015-05-07,1994-02-02,Terms & Conditions,All payments to be made in cash.,572.80
