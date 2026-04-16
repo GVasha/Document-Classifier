@@ -1,3 +1,7 @@
 pymupdf
 pytesseract
 pillow
+scikit-learn
+pandas
+matplotlib
+numpy
