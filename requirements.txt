@@ -6,3 +6,6 @@ Pillow>=12.0,<13
 PyMuPDF>=1.25,<2
 pytesseract>=0.3.13
 lightgbm>=4.0,<5
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+python-multipart>=0.0.20,<1

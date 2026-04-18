@@ -1,0 +1,46 @@
+:root {
+  --bg-deep: #070b12;
+  --bg-panel: rgba(15, 23, 42, 0.72);
+  --bg-elevated: rgba(30, 41, 59, 0.55);
+  --border: rgba(148, 163, 184, 0.18);
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #2dd4bf;
+  --accent-dim: rgba(45, 212, 191, 0.15);
+  --danger: #f87171;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background-color: var(--bg-deep);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(45, 212, 191, 0.12), transparent),
+    radial-gradient(900px 500px at 100% 0%, rgba(99, 102, 241, 0.1), transparent),
+    var(--bg-deep);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+code,
+.mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
