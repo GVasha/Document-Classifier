@@ -5,14 +5,12 @@ import pickle
 import numpy as np
 import pandas as pd
 
-BASE_DIR = Path(__file__).resolve().parent
+BASE_DIR   = Path(__file__).resolve().parent
+MODELS_DIR = BASE_DIR.parent / "artifacts" / "models"
 sys.path.insert(0, str(BASE_DIR))
 
-from scan import preprocess
-from shared import extract_features
-
-BASE_DIR   = Path(__file__).resolve().parent
-MODELS_DIR = BASE_DIR / "artifacts" / "models"
+from shared import preprocess, extract_features
+from invoice_extractor import extract_fields_from_file
 
 BASE_WEIGHT = 0.7
 LGBM_WEIGHT   = 0.3
@@ -49,10 +47,18 @@ def predict_category(doc_path: str) -> str:
     return _classes[int(np.argmax(p_combined))]
 
 
+def classify(doc_path: str) -> dict:
+    label = predict_category(doc_path)
+    result = {"label": label}
+    if label == "invoice":
+        result["invoice_fields"] = extract_fields_from_file(doc_path)
+    return result
+
+
 if __name__ == "__main__":
-    import sys
+    import json
 
     if len(sys.argv) < 2:
         print("Usage: python classifier.py <document_path>")
     else:
-        print(predict_category(sys.argv[1]))
+        print(json.dumps(classify(sys.argv[1]), indent=2))

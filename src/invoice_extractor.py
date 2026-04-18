@@ -18,7 +18,7 @@ from typing import Iterable, Optional
 import pytesseract
 from PIL import Image, ImageOps
 
-from scan import preprocess
+from shared import preprocess
 
 SUPPORTED_EXTS = {".pdf", ".tif", ".tiff", ".png", ".jpg", ".jpeg", ".bmp"}
 DATE_YEAR_MIN = 1960
