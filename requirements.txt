@@ -1,3 +1,8 @@
 pymupdf
 pytesseract
 pillow
+sentencepiece
+transformers<5
+torch
+sentencepiece
+protobuf
