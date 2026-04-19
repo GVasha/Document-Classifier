@@ -29,7 +29,7 @@ DATE_REGEX = re.compile(
     r"(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)\.?\s+\d{1,2},?\s+\d{2,4})\b",
     flags=re.IGNORECASE,
 )
-_AMOUNT_BODY = r"(?:\d{1,3}(?:[.,\s]\d{3})+|\d+)(?:[.,]\d{2})"
+_AMOUNT_BODY = r"(?:\d{1,3}(?:[.,\s]\d{3})+|\d+)(?:[.,]\d{2})?"
 AMOUNT_REGEX = re.compile(
     rf"(?<!\d)(?<!\d )(?:(?:\$|EUR|GBP|USD|AED|INR)\s*)?(?:{_AMOUNT_BODY})(?:\s*(?:USD|EUR|GBP|AED|INR))?(?![\d.,])"
 )
@@ -54,6 +54,10 @@ _DUE_LINE_PATTERNS = [
     re.compile(r"(?i)\bremit(?:tance)?\s*(?:by|before)?\s*[:.\-\s]+\s*(.+)$"),
     re.compile(r"(?i)\bbalance\s*due\s*[:.\-\s]+\s*(.+)$"),
     re.compile(r"(?i)\b(?:deadline|good\s*until|must\s*be\s*paid)\s*[:.\-\s]+\s*(.+)$"),
+    re.compile(r"(?i)\b(?:total\s+)?payment\s+due\s+(?:in|within)\s+(\d{1,3})\s*days?\b"),
+    re.compile(r"(?i)\bdue\s+(?:in|within)\s+(\d{1,3})\s*days?\b"),
+    re.compile(r"(?i)\bpay(?:ment)?\s+(?:in|within)\s+(\d{1,3})\s*days?\b"),
+    re.compile(r"(?i)\bterms?\s*[:.\-\s]*(?:pay(?:ment)?\s*)?(?:in|within)\s+(\d{1,3})\s*days?\b"),
     re.compile(r"(?i)\bdue\s*[:.\-\s]+\s*(.+)$"),
 ]
 _DUEISH_LINE_HINT = re.compile(
@@ -274,6 +278,26 @@ def _parse_any_date_in_chunk(chunk: str | None, *, prefer_last: bool = False) ->
     return found[0]
 
 
+def _extract_days_term(value: str | None) -> int | None:
+    if not value:
+        return None
+    v = value.strip()
+    for pat in (
+        r"(?i)\b(?:net|in|within|before)\s*(\d{1,3})\s*days?\b",
+        r"(?i)\b(\d{1,3})\s*days?\b",
+        r"^\s*(\d{1,3})\s*$",
+    ):
+        m = re.search(pat, v)
+        if m:
+            try:
+                n = int(m.group(1))
+                if 1 <= n <= 365:
+                    return n
+            except ValueError:
+                continue
+    return None
+
+
 def _looks_like_contact_or_address(line: str) -> bool:
     low = line.lower().strip()
     if not low:
@@ -307,10 +331,31 @@ def _looks_like_name_line(line: str) -> bool:
     low = line.lower().strip()
     if not low or _looks_like_contact_or_address(line):
         return False
+    label_norm = re.sub(r"[^a-z]+", " ", low).strip()
+    if label_norm in {
+        "bill to",
+        "billed to",
+        "ship to",
+        "invoice to",
+        "from",
+        "seller",
+        "buyer",
+        "customer",
+        "client",
+        "recipient",
+        "issuer",
+        "vendor",
+        "supplier",
+        "remit to",
+    }:
+        return False
     if re.search(r"\b(?:gst|vat|tax|invoice|total|subtotal|amount|due|date)\b", low):
         return False
-    if re.search(r"\b(?:item|items|quantity|qty|price|description|unit\s*price|rate|sku)\b", low):
-        return False
+    table_kw = re.search(r"\b(?:item|items|quantity|qty|price|description|unit\s*price|rate|sku)\b", low)
+    if table_kw:
+        word_count = len(re.findall(r"[A-Za-z&'.-]+", line))
+        if re.search(r"\d", line) or ":" in line or word_count >= 3:
+            return False
     if re.match(r"^\s*\d", line):
         return False
     if line.isupper() and len(line.split()) >= 2:
@@ -492,10 +537,10 @@ def _clean_party_name(name: str | None) -> str | None:
 
 def _extract_party(text: str, lines: list[str], role: str) -> str | None:
     _RECIPIENT_LABEL_KWS = (
-        r"buyer|bill\s*to|invoice\s*to|customer|client|sold\s*to|ship\s*to|recipient"
+        r"buyer|bill[\s_-]*to|invoice[\s_-]*to|customer|client|sold[\s_-]*to|ship[\s_-]*to|recipient"
     )
     _ISSUER_LABEL_KWS = (
-        r"from|bill\s*from|vendor|supplier|seller|issuer|remit\s*to"
+        r"from|bill[\s_-]*from|vendor|supplier|seller|issuer|remit[\s_-]*to"
     )
 
     if role == "recipient":
@@ -538,7 +583,9 @@ def _extract_party(text: str, lines: list[str], role: str) -> str | None:
         if re.search(r"\b(?:gst|vat|tax|subtotal|total|amount\s*due)\b", cand, re.I):
             return False
         if re.search(r"\b(?:item|items|quantity|qty|price|description|unit\s*price|rate|sku)\b", cand, re.I):
-            return False
+            word_count = len(re.findall(r"[A-Za-z&'.-]+", cand))
+            if re.search(r"\d", cand) or ":" in cand or word_count >= 3:
+                return False
         return True
 
     def _issuer_blocklist(cand: str) -> bool:
@@ -562,7 +609,9 @@ def _extract_party(text: str, lines: list[str], role: str) -> str | None:
         if re.search(r"\b(?:gst|vat|tax|subtotal|total|amount\s*due)\b", cand, re.I):
             return False
         if re.search(r"\b(?:item|items|quantity|qty|price|description|unit\s*price|rate|sku)\b", cand, re.I):
-            return False
+            word_count = len(re.findall(r"[A-Za-z&'.-]+", cand))
+            if re.search(r"\d", cand) or ":" in cand or word_count >= 3:
+                return False
         if sum(ch.isalpha() for ch in cand) < 3:
             return False
         return True
@@ -584,7 +633,7 @@ def _extract_party(text: str, lines: list[str], role: str) -> str | None:
     if role == "recipient":
         _FUZZY_LABELS = (
             r"bill\s*.{0,2}o|buyer|invoice\s*.{0,2}o|sold\s*.{0,2}o|"
-            r"customer|client|recipient"
+            r"ship\s*.{0,2}o|customer|client|recipient"
         )
     else:
         _FUZZY_LABELS = (
@@ -771,6 +820,27 @@ def _extract_total_amount(text: str, lines: list[str]) -> str | None:
     return None
 
 
+def _extract_parties_from_combined_labels(lines: list[str]) -> tuple[str | None, str | None]:
+    """Handle OCR where 'Billed to' and 'From' appear on the same line."""
+    combined_label_re = re.compile(
+        r"(?i)\b(?:bill(?:ed)?\s*to|invoice\s*to|customer|client|recipient)\b.*\bfrom\b"
+    )
+    stop_re = re.compile(
+        r"(?i)\b(?:item|items|quantity|qty|price|amount|subtotal|total|payment|note|invoice\s*#|invoice\s*number)\b"
+    )
+    for i, ln in enumerate(lines[:60]):
+        if not combined_label_re.search(ln):
+            continue
+        for j in range(i + 1, min(i + 5, len(lines))):
+            cand = lines[j].strip(" :-\t")
+            if not cand or stop_re.search(cand):
+                break
+            left, right = _split_possible_dual_names(cand)
+            if left and right:
+                return left, right
+    return None, None
+
+
 def _labeled_due_date_from_lines(lines: list[str], invoice_date: str | None) -> str | None:
     skip_start = re.compile(
         r"(?i)^(the|upon|receipt|immediately|cash|wire|ach|transfer|see\s+reverse|t\.?\s*b\.?\s*d\.?|asap)\b",
@@ -871,6 +941,11 @@ def _extract_fields_generic(text: str) -> dict:
             r"balance\s*due\s*[:.\-]?\s*([^\n;]{3,55})",
             r"(?:deadline|good\s*until)\s*[:.\-]?\s*([^\n;]{3,55})",
             r"(?m)^\s*due\s*[:.\-]\s*([^\n;]{3,55})",
+            r"(?i)\b(?:total\s+)?payment\s+due\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bdue\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bpay(?:ment)?\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bwithin\s*(\d{1,3})\s*days?\s*(?:of\s*(?:invoice|issue|receipt))?\b",
+            r"(?i)\bterms?\s*[:.\-]?\s*(?:pay(?:ment)?\s*)?(?:in|within)\s*(\d{1,3})\s*days?\b",
             r"(?:payment\s*)?terms\s*[:.\-]?\s*net\s*(\d{1,3})\s*days?",
             r"\bnet\s*(\d{1,3})\s*days?\b",
         ],
@@ -905,17 +980,23 @@ def _extract_fields_generic(text: str) -> dict:
     if not due_date and invoice_date:
         due_date = _labeled_due_date_from_lines(lines, None) or _due_dates_from_dueish_lines(lines, None)
 
-    if not due_date and due_date_raw and due_date_raw.isdigit() and invoice_date:
+    due_days = _extract_days_term(due_date_raw)
+    if not due_date and due_days and invoice_date:
         try:
             inv_dt = datetime.fromisoformat(invoice_date)
-            due_date = (inv_dt + timedelta(days=int(due_date_raw))).date().isoformat()
+            due_date = (inv_dt + timedelta(days=due_days)).date().isoformat()
         except Exception:
             pass
 
     invoice_date, due_date = _sanitize_date_pair(invoice_date, due_date)
 
-    issuer_name = _clean_party_name(_extract_party(text, lines, "issuer"))
-    recipient_name = _clean_party_name(_extract_party(text, lines, "recipient"))
+    recipient_name, issuer_name = _extract_parties_from_combined_labels(lines)
+    if not issuer_name:
+        issuer_name = _extract_party(text, lines, "issuer")
+    if not recipient_name:
+        recipient_name = _extract_party(text, lines, "recipient")
+    issuer_name = _clean_party_name(issuer_name)
+    recipient_name = _clean_party_name(recipient_name)
     total_amount = _extract_total_amount(text, lines)
 
     if recipient_name and issuer_name and recipient_name.strip().lower() == issuer_name.strip().lower():
@@ -1032,15 +1113,20 @@ def _extract_fields_clear_layout(text: str) -> dict:
         [
             r"due\s*date\s*:\s*([0-9]{1,2}[\-/][0-9]{1,2}[\-/][0-9]{2,4})",
             r"payment\s*due\s*:\s*([0-9]{1,2}[\-/][0-9]{1,2}[\-/][0-9]{2,4})",
+            r"(?i)\b(?:total\s+)?payment\s+due\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bdue\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bpay(?:ment)?\s+(?:in|within)\s*(\d{1,3})\s*days?\b",
+            r"(?i)\bwithin\s*(\d{1,3})\s*days?\s*(?:of\s*(?:invoice|issue|receipt))?\b",
             r"terms\s*:\s*net\s*(\d{1,3})\s*days",
         ],
         text,
     )
     due_date = _parse_date_candidate(due_date_raw)
-    if not due_date and due_date_raw and due_date_raw.isdigit() and invoice_date:
+    due_days = _extract_days_term(due_date_raw)
+    if not due_date and due_days and invoice_date:
         try:
             inv_dt = datetime.fromisoformat(invoice_date)
-            due_date = (inv_dt + timedelta(days=int(due_date_raw))).date().isoformat()
+            due_date = (inv_dt + timedelta(days=due_days)).date().isoformat()
         except Exception:
             pass
     if due_date and invoice_date and due_date == invoice_date:
