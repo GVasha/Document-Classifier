@@ -6,7 +6,7 @@ Classifies scanned document images or PDFs into one of four categories: **email*
 
 **Classification** — each document goes through two parallel pipelines whose probability outputs are combined in a weighted ensemble:
 
-1. **TF-IDF + Linear SVM (weight 0.7)** — OCR text is vectorized using word and character n-grams, then classified by a tuned Linear SVM. Achieves ~96.7% accuracy on the test set.
+1. **TF-IDF + Logistic Regression (weight 0.7)** — OCR text is vectorized using word and character n-grams, then classified by a tuned Logistic Regression. Achieves ~96.25% accuracy on the test set.
 2. **LightGBM on hand-crafted features (weight 0.3)** — ~24 regex-based features capture structural signals (word count, number density), class-specific keywords (invoice totals, email headers, question marks, academic markers), and pattern counts (dates, currency symbols, email addresses). Achieves ~90% accuracy standalone.
 
 The combined prediction is the argmax of the weighted probability sum.
