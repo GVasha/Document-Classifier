@@ -44,7 +44,7 @@ Training uses the first 300 per class; the remaining 200 are available for unsee
 
 Pre-built artifacts (OCR cache + trained models) are available for download so you can run inference or retrain without re-running OCR from scratch:
 
-[Download data and artifacts from Google Drive](https://drive.google.com/drive/folders/14ufHjME3zI3ExvQHilSxld5EV4h4x7W9?usp=sharing)
+[Download data and artifacts from Google Drive](https://drive.google.com/drive/folders/1c3HbPby2vNByxhA5BlHwk-5DU1mTXjD4?usp=sharing)
 
 Place the downloaded folders at the repo root so the layout matches the tree above.
 

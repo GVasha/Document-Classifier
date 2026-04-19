@@ -142,7 +142,12 @@ def load_ocr_cache(max_per_class: int = 300) -> pd.DataFrame:
     else:
         rows = []
         for label in CLASSES:
-            paths = sorted((DATASET_DIR / label).glob("*.png"))[:max_per_class]
+            class_dir = DATASET_DIR / label
+            paths = sorted(
+                p
+                for p in class_dir.iterdir()
+                if p.is_file() and p.suffix.lower() in IMAGE_EXTS
+            )[:max_per_class]
             print(f"Processing {label} ({len(paths)} files)...")
             for p in paths:
                 rows.append({"path": str(p), "label": label, "text": extract_text(p)})
